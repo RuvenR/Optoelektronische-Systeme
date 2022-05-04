@@ -1,0 +1,80 @@
+\pagenumbering{Roman}
+\newgeometry{left=2.5cm,bottom=1cm,top=0.7cm,right=2.5cm}
+    \noindent
+	\thispagestyle{empty}
+	\pagenumbering{Roman}
+	\vspace*{1.5mm}
+	\begin{center}
+ 		\makebox[\textwidth]{\includegraphics[width=1.1\textwidth]{EAH_header}}
+	\end{center}
+	\begin{center}
+		\vspace*{20mm}
+        \large
+        Fachbereich Elektrotechnik und Informationstechnik\\
+        \vspace*{12mm}
+        \huge
+        \textbf{SEMINARARBEIT}\\
+        \large
+        \vspace*{14.5mm}
+        %\textbf{zur Erlangung des akademischen Grades}\\
+        %Bachelor of Engineering (B. Eng.)
+        \Large
+        \begin{spacing}{1.3}
+        \textbf{RaioSat -- Erstellung eines 3D-Modells der Beobachtungssituation}
+        \end{spacing}
+        \vspace{39mm} 
+\begin{spacing}{1.8}
+\begin{large}
+\begin{tabular}{ l l } 
+ Eingereicht von: & Kreusch, Richard \hspace{4mm}(641294) \\
+ & Rüger, Ruven\hspace{12.5mm}(644794)\\
+ %Geboren am: & 29.08.2000 in Kulmbach\\
+ %Matrikelnummer: & 644794 \\
+ Studiengang: & Master Elektrotechnik/Informationstechnik \\
+ Modul:& Optoelektronische Systeme \\
+ Betreuer: & Prof. Dr. Alexander Richter\\
+ %Mentor (Jena-Optronik GmbH): & M. Eng. Fabian Lami\\
+ %Datum der Themenausgabe: & 22.02.2022\\
+ Datum der Abgabe: & 01.01.1970\\
+
+\end{tabular}
+\end{large}
+\end{spacing}      
+\end{center}
+\vspace{3mm}
+\begin{center}
+	\makebox[\textwidth]{\includegraphics[width=1.1\textwidth]{EAH_footer}}
+\end{center}
+\restoregeometry
+\newpage
+
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+%\addcontentsline{toc}{section}{Inhaltsverzeichnis}
+\markright{Inhaltsverzeichnis}
+\section*{Inhaltsverzeichnis}
+\printcontents{ }{3}{}
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\automark{section}
+\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+\markright{Abkürzungsverzeichnis}
+\vspace{1cm}
+\section*{Abkürzungsverzeichnis}
+\acuseall
+\printacronyms[display=all,heading=none]
+\newpage
+
+\addcontentsline{toc}{section}{Symbolverzeichnis}
+\markright{Symbolverzeichnis}
+\section*{Symbolverzeichnis}
+\input{symbolverzeichnis}
+\clearpage
+
+\addcontentsline{toc}{section}{Abstract}
+\markright{Abstract}
+\section*{Abstract}
+
+\clearpage

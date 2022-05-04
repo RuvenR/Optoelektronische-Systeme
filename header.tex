@@ -1,0 +1,124 @@
+\documentclass[12pt,a4paper,oneside,ngerman,hidelinks]{article}
+
+\usepackage[a4paper, left= 3.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry} %Festlegen der Ränder
+\setlength{\headheight}{12.5pt} %Ändern des Zugewiesenen Platzes für Header
+
+
+\usepackage{setspace} %Ändern Zeilenabstand
+\setstretch{1.433}
+\usepackage{csquotes} %Zitieren für BibLaTeX
+\usepackage[T1]{fontenc} %Fonts mit europäischer Codierung
+
+\usepackage{fontspec} %Festlegen einer Custom Fost aus Systemfonts (XeLaTeX)
+\usepackage{polyglossia} %Alternative für babel (XeLaTeX)
+\setmainlanguage{german} %für fontspec
+\setotherlanguages{english}
+\setmainfont{Times New Roman} %für fontspec
+\usepackage{placeins} %Verhindern, dass sich floats über Punkt hinaus bewegen
+\usepackage{caption} %Mehrzeilige Captions werden mit Einzug formatiert
+\captionsetup{format=hang}
+\usepackage{siunitx}
+\sisetup{locale = DE}
+
+\usepackage{amsmath} %Anwendung von mathematischen Funktionen
+\usepackage{amsfonts} %u. a. mathematische Symbole/Fonts
+\usepackage{amssymb} %u. a. mathematische Symbole/Fonts
+\usepackage{graphicx} %Einbinden von Grafiken
+\usepackage{tabulary} %verbesserte Tabellen
+\usepackage{longtable} %Tabellen mit Seitenumbruch
+\usepackage[dvipsnames,table]{xcolor} % Färben von Tabelle
+\definecolor{light-gray}{HTML}{E5E4E2}
+\definecolor{light-red}{HTML}{ffcccc}
+\usepackage{multirow} %mehrzeilige Tabellenzellen
+\usepackage{pgfplots} %Plotten von Werten
+\pgfplotsset{compat=1.17}
+\usepackage{acro}
+% https://tex.stackexchange.com/questions/624047/acro-package-move-translation-to-the-next-line-with-long-table, 12.01.2022
+\DeclareAcroProperty?{foreign-newline}
+\NewAcroTemplate[list]{LongtableForeign}
+{
+    \AcroNeedPackage {array,longtable}
+    \acronymsmapF
+    {
+        \AcroAddRow
+        {
+            \acrowrite {short}
+            \acroifT {alt} { / } \acrowrite {alt}
+            &
+            \acrowrite {list}
+            \acroifbooleanTF{foreign-newline}{
+                \newline
+            \itshape \acroifT{foreign}{(}\acrowrite{foreign}\acroifT{foreign}{)}}
+            {\itshape \acroifT{foreign}{(}\acrowrite{foreign}\acroifT{foreign}{)}}  
+            \acropagefill
+            \acropages
+            {\acrotranslate {page} \nobreakspace }
+            {\acrotranslate {pages} \nobreakspace }
+            \tabularnewline
+        }
+    }
+    { \AcroRerun }  
+    \acroheading
+    \acropreamble
+    \par \noindent
+    \begin {longtable} {>{\bfseries}lp{.7\linewidth}}
+    \AcronymTable
+    \end {longtable}
+}
+%---
+\usepackage{titletoc}
+
+
+\setlength{\parindent}{0pt} %Zeilen nach neuem Absatz 0px einrücken
+\usepackage[hang,flushmargin]{footmisc} %Einzug Fußnote entfernen
+\addto\captionsgerman{\renewcommand{\figurename}{Abb.}}%Abkürzen der Bezeichnung für Abbildung
+\setlength{\abovecaptionskip}{3pt plus 3pt minus 2pt} %Festlegen von Platz über Bildunterschrift
+\usepackage{wrapfig} %Bilder von Text umfließen lassen
+\usepackage{subcaption} %subfigures
+\usepackage{geometry} %Vereinfachung des Seitenlayouts
+\usepackage{setspace} %flexible Änderung von Zeilenabständen
+\usepackage{scalerel}
+
+\newcounter{alteSeitenzahl} %Zähler für Umschalten zwischen römischen und arabischen Zahlen
+\usepackage{chngcntr} %Änderung von Countern wird ermöglicht
+
+\newcounter{appendno} % Counter für Anhang
+\newcommand{\stepappend}{%
+	\stepcounter{appendno}%
+	}
+\newcommand{\rappend}[1]{\refstepcounter{appendno}\label{#1}}
+
+
+
+\usepackage[titles]{tocloft} % in Abbildungs- /Tabellenverzeichnis Bezeichnung vor Zahl
+\renewcommand{\cfttabpresnum}{Tab. }
+\renewcommand{\cftfigpresnum}{Abb. }
+\settowidth{\cfttabnumwidth}{Abb. 10\quad}
+\settowidth{\cftfignumwidth}{Abb. 10\quad}
+
+
+\AtBeginDocument{
+\addtolength{\abovedisplayskip}{-2ex}
+\addtolength{\abovedisplayshortskip}{-2ex}
+\addtolength{\belowdisplayskip}{-0.5ex}
+\addtolength{\belowdisplayshortskip}{-0.5ex}
+}
+
+\usepackage[headsepline, markcase=ignoreuppercase]{scrlayer-scrpage} %Definition von Seitenlayout
+\automark{subsection} %Text für Titelseite
+\renewcommand{\headfont}{\normalfont\rmfamily}
+
+\usepackage{titlesec}
+\graphicspath{{Bilder/}}
+
+\usepackage[citestyle=numeric,bibstyle=ieee,doi=false,isbn=false,url=true,eprint=false, defernumbers=true, sorting=none,minnames=1,maxnames=99]{biblatex}
+
+\DefineBibliographyStrings{german}{andothers={et\addabbrvspace al\adddot},jourvol={Bd\adddot}}
+\addbibresource{referenzen.bib}
+
+\newcommand*\oldurlbreaks{}
+\let\oldurlbreaks=\UrlBreaks
+\usepackage{tocbibind}
+\PassOptionsToPackage{hyphens}{url}\usepackage[pdfauthor={Ruven Rüger},pdftitle={Bachelorarbeit Ruven Rüger}]{hyperref} %Verlinken von Überschriften (muss letztes Package sein!)
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z}

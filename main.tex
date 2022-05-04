@@ -1,0 +1,48 @@
+\input{header}
+\input{akronyme}
+\begin{document}
+\startcontents
+\input{verzeichnisse}
+
+\setcounter{alteSeitenzahl}{\arabic{page}}
+\pagenumbering{arabic} 
+\setcounter{page}{\thealteSeitenzahl}
+\automark{section}
+
+
+\input{textteil}
+
+
+\clearpage
+\automark{section}
+\section*{Literatur- und Quellenverzeichnis}
+\addcontentsline{toc}{section}{Literatur- und Quellenverzeichnis}
+\markright{Literatur- und Quellenverzeichnis}
+
+\DeclareFieldFormat{url}{URL:\addspace\url{#1}}
+\printbibliography[heading=none]
+\vspace{2.5cm}
+\clearpage
+
+\input{anhang}
+
+\clearpage
+\thispagestyle{empty}
+{\Large \textbf{Selbstständigkeitserklärung}}\\
+
+Wir erklären hiermit, dass wir die vorliegende Arbeit selbstständig und nur unter 
+Verwendung der angegebenen Quellen und Hilfsmittel angefertigt haben. Diese Arbeit lag 
+in gleicher oder ähnlicher Weise noch keiner Prüfungsbehörde vor und wurde bisher noch 
+nicht veröffentlicht.\\ \\
+
+Jena, den \today
+\vspace{1.6cm}
+\par\noindent\rule{0.4\textwidth}{0.4pt}\\
+\vspace{-0.8cm}
+Richard Kreusch
+\vspace{1.6cm}
+\par\noindent\rule{0.4\textwidth}{0.4pt}\\
+\vspace{-0.8cm}
+Ruven Rüger
+
+\end{document}

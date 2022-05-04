@@ -1,0 +1,26 @@
+
+\acsetup{
+  make-links     = false,    
+  %list/template  = longtable,
+  list/template = LongtableForeign,
+  list/heading   = section*,
+  list/sort      = true,
+  index/use		 = true,
+  foreign/display=true,
+  first-style = long-short,
+}
+
+\DeclareAcronym{jop}{
+  short = JOP ,
+  long  = Jena-Optronik GmbH ,
+  sort  = jop
+}
+
+\DeclareAcronym{ctia}{
+  short = CTIA ,
+  foreign  = {engl.: Capacitive Transimpedance Amplifier} ,
+  long  = Transimpedanzverstärker mit kapazitiver Rückkopplung ,
+  foreign-babel = english ,
+  foreign-newline = true ,
+  sort  = ctia
+}
